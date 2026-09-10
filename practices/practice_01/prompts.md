@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|---|---|---|
 | P1-01 | Baseline-ревью `TRAINING_PR.diff` | plan · openai/gpt-5 | zero-shot | `opencode run "Используй только приложенный diff. Не читай другие файлы репозитория. Посмотри PR и найди проблемы." --agent plan --file practices/practice_01/TRAINING_PR.diff` | `practices/practice_01/P1_01.md` | Найдены: отсутствие валидации тела запроса, отсутствие обработки ошибок LLM, отсутствие таймаута, prompt-injection, отсутствие логирования, отсутствие тестов | Отклонили номера строк (`+35-38`, `+19-22`, `+9-13`) — модель их выдумала, в diff нет таких строк; ссылки на Python 3.8 нерелевантны (в diff нет `setup.py`/`pyproject.toml`); «blocking behavior» и «rate limiting» — вне scope практики | Сверили каждую строку с `TRAINING_PR.diff`; подтверждённых привязок к строкам — 0 из 13 |
 | P1-02 | Повторное ревью с master prompt | plan · openai/gpt-5 | master prompt | `master_prompt.md` (см. раздел «Master Prompt v1» ниже) | `practices/practice_01/P1_02.md` | Summary, 3 риска с привязкой к строкам (`review_service.py:15,16,17`, `api.py:9`), 4 проверки, Gaps | «Строка не указана в diff» в исходном ответе заменили на реальные номера; уточнили источник `OUT-1` (формат формируется в `review_service.py:17`, `api.py:9` только транслирует); приоритет `API-1` оставили в «Высоких» | Каждый риск сверен с diff; каждая ссылка на правило — с `CASE.md` |
-| P1-03 | — | — | — | — | — | — | — | — |
+| P1-03 | Заполнение 8 артефактов Практики 1 | build · openai/gpt-5 | master prompt v2 | `master_prompt_v2.md` | Этот отчёт: `analysis.md`, `product_management.md`, `project_management.md`, `adr.md`, `tests_*.md`, обновления `problem.md/context.md` | Добавлены AS IS/TO BE, Mermaid-схемы, таблицы тестов, инкременты, ADR | Verified-секции не трогались; все риски привязаны к `review_service.py:15–17`, `api.py:9`; исключены правила вне Context Pack | Сверили с `TRAINING_PR.diff`, `CASE.md`, `P1_02.md`; выполнили самопроверку по DoD |
 
 ## Master Prompt v1
 
@@ -243,3 +243,5 @@ practices/practice_01/master_prompt.md
 | 1 |  |  |
 | 2 |  |  |
 | 3 |  |  |
+
+peer review отложен
