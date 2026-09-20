@@ -31,6 +31,15 @@
 Правила про `snake_case` для таблиц БД и i18n для frontend-строк
 к учебному PR не относятся и в Context Pack не входят.
 
+### Rule → Evidence (TRAINING_PR.diff)
+
+| Rule | Evidence |
+|---|---|
+| SEC-1 | TRAINING_PR.diff: app/review_service.py:15 — сырой diff включается в промпт без маскирования |
+| API-1 | TRAINING_PR.diff: app/api.py:9 — нет проверки длины, прямой проксирующий вызов |
+| REL-1 | TRAINING_PR.diff: app/review_service.py:16 — `self.llm.generate(prompt)` без таймаута/обработки |
+| OUT-1 | TRAINING_PR.diff: app/review_service.py:17 → api.py:9 — наружу отдаётся `{ "comment": ...}` вместо `summary/risks/checks` |
+
 ### Формат входа и результата
 
 - Вход: `diff: str`.
