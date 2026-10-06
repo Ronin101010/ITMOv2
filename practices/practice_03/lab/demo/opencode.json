@@ -32,7 +32,18 @@
         "glob": "allow",
         "grep": "allow"
       }
+    },
+    "local-guide-b": {
+      "description": "Read-only local repository assistant (Prompt B)",
+      "mode": "primary",
+      "prompt": "{file:./repo-system-b.txt}",
+      "steps": 8,
+      "permission": {
+        "*": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
+      }
     }
   }
 }
-
