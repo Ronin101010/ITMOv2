@@ -55,4 +55,21 @@
       "codemode": false
     }
   }}
+  ,
+  "notes": {
+    "mcp_context7": {
+      "usage_examples": [
+        {
+          "description": "Запрос документации по FastAPI в нужной версии",
+          "command": "use context7: query-docs 'FastAPI response validation'",
+          "expected": "Ссылки и выдержки из документации FastAPI"
+        },
+        {
+          "description": "Ошибочный запрос с неизвестным ресурсом",
+          "command": "use context7: query-docs 'nonexistent-component-xyz'",
+          "expected": "Сообщение об отсутствии результата или корректная ошибка"
+        }
+      ]
+    }
+  }
 }
